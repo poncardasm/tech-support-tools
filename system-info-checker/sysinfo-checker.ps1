@@ -86,5 +86,3 @@ foreach ($g in $gpu) {
 Write-Host ""
 Write-Host "Success! Please check the $logFile"
 
-# Wait for the user to press "Enter" before exiting
-Read-Host -Prompt "Press 'Enter' to exit"
