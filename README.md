@@ -6,7 +6,7 @@ The goal of this repository is to serve as a centralized hub for practical tools
 
 ## Tools
 
-- **System Info Checker**
+- [**System Info Checker**](https://github.com/poncardasm/tech-support-tools/tree/main/system-info-checker)
 
   - A PowerShell script that gathers detailed system information including operating system, CPU, motherboard, memory, and GPU details. The tool generates a dated log file for easy reference.
 
