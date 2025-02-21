@@ -36,6 +36,9 @@ $os = Get-CimInstance -ClassName Win32_OperatingSystem
 # Retrieve CPU details
 $cpu = Get-CimInstance -ClassName Win32_Processor
 
+# Retrieve Motherboard details
+$motherboard = Get-CimInstance -ClassName Win32_BaseBoard
+
 # Retrieve memory (RAM) details
 $memory = Get-CimInstance -ClassName Win32_PhysicalMemory
 
@@ -56,6 +59,14 @@ Write-Log "Name: $($cpu.Name)"
 Write-Log "Number Of Cores: $($cpu.NumberOfCores)"
 Write-Log "Number Of Logical Processors: $($cpu.NumberOfLogicalProcessors)"
 Write-Log "Max Clock Speed: $($cpu.MaxClockSpeed) MHz"
+Write-Log ""
+
+# Write Motherboard Information
+Write-Log "=== Motherboard Information ==="
+Write-Log "Manufacturer: $($motherboard.Manufacturer)"
+Write-Log "Product: $($motherboard.Product)"
+Write-Log "Version: $($motherboard.Version)"
+Write-Log "Serial Number: $($motherboard.SerialNumber)"
 Write-Log ""
 
 # Write Memory (RAM) Information
@@ -88,7 +99,11 @@ foreach ($g in $gpu) {
     Write-Log "Video Processor: $($g.VideoProcessor)"
     Write-Log "(Note: The AdapterRAM property may not always accurately represent VRAM)"
 }
+Write-Log ""
 
 # Notify the user that the script finished successfully and show the log file name
 Write-Host "Success! Please check the $logFile"
+
+# Wait for the user to press "Enter" before exiting
+Read-Host -Prompt "Press 'Enter' to exit"
 
