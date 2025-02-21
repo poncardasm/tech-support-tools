@@ -78,11 +78,17 @@ foreach ($g in $gpu) {
     Write-Log "---------------------------------"
     Write-Log "Name: $($g.Name)"
     Write-Log "Driver Version: $($g.DriverVersion)"
-    Write-Log "Adapter RAM: $([math]::Round(($g.AdapterRAM / 1GB), 2)) GB"
+    if ($g.AdapterRAM -and $g.AdapterRAM -gt 0) {
+        $adapterRAMGB = [math]::Round(($g.AdapterRAM / 1GB), 2)
+        Write-Log "Adapter RAM (approx. VRAM): $adapterRAMGB GB"
+    }
+    else {
+        Write-Log "Adapter RAM (approx. VRAM): Not available"
+    }
     Write-Log "Video Processor: $($g.VideoProcessor)"
+    Write-Log "(Note: The AdapterRAM property may not always accurately represent VRAM)"
 }
 
 # Notify the user that the script finished successfully and show the log file name
-Write-Host ""
 Write-Host "Success! Please check the $logFile"
 
