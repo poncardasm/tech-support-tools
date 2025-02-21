@@ -83,13 +83,6 @@ Write-Log "================================"
 Write-Log "Total Visible Memory: $totalMemoryGB GB"
 Write-Log "Detailed Module Info:"
 
-# Create a mapping for SMBIOSMemoryType
-$memoryTypeMapping = @{
-    24 = "DDR3"
-    26 = "DDR4"
-    30 = "DDR5"
-}
-
 # Get memory information using both methods
 $detailedMemory = Get-WmiObject -Class "Win32_PhysicalMemory"
 $memoryInfo = Get-CimInstance -ClassName Win32_PhysicalMemory
@@ -101,22 +94,37 @@ for ($i = 0; $i -lt $detailedMemory.Count; $i++) {
     
     $capacityGB = [math]::Round(($mod.Capacity / 1GB), 2)
     
-    # Get memory type using SMBIOSMemoryType
-    $memoryType = "Unknown"
-    if ($null -ne $mod.SMBIOSMemoryType -and $memoryTypeMapping.ContainsKey($mod.SMBIOSMemoryType)) {
-        $memoryType = $memoryTypeMapping[$mod.SMBIOSMemoryType]
+    # Determine DDR version based on part number
+    $ddrVersion = "Unknown"
+    if ($cimMod.PartNumber -match "D4") {
+        $ddrVersion = "DDR4"
+    }
+    elseif ($cimMod.PartNumber -match "D5") {
+        $ddrVersion = "DDR5"
+    }
+    elseif ($cimMod.PartNumber -match "D3") {
+        $ddrVersion = "DDR3"
+    }
+
+    # Extract rated speed from part number (if available)
+    $ratedSpeed = "Unknown"
+    if ($cimMod.PartNumber -match "3000") {
+        $ratedSpeed = "3000"
     }
     
     Write-Log "---------------------------------"
     Write-Log "Manufacturer: $($mod.Manufacturer)"
     Write-Log "Capacity: $capacityGB GB"
-    Write-Log "Speed: $($mod.ConfiguredClockSpeed) MHz"
-    Write-Log "DDR Version: $memoryType"
+    Write-Log "Current Running Speed: $($mod.ConfiguredClockSpeed) MHz"
+    Write-Log "Maximum Rated Speed: $ratedSpeed MHz"
+    Write-Log "DDR Version: $ddrVersion"
     Write-Log "Form Factor: $($cimMod.FormFactor)"
     Write-Log "Part Number: $($cimMod.PartNumber)"
     Write-Log "Configured Voltage: $($mod.ConfiguredVoltage) mV"
+    Write-Log ""
+    Write-Log "Note: To achieve maximum rated speed of $ratedSpeed MHz,"
+    Write-Log "enable XMP/DOCP in your BIOS settings."
 }
-
 Write-Log ""
 
 # Write GPU Information
