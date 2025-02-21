@@ -4,10 +4,13 @@ Author: Mchael Poncardas (https://github.com/poncardasm)
 Description: A script to gather system information.
 #>
 
+# Prompt the user to press "Enter" to start
+Read-Host -Prompt "Press 'Enter' key to run System Info checker"
+
 # Get the current date in the desired format (YYYY-MM-DD)
 $date = Get-Date -Format "yyyy-MM-dd"
 
-# Define the log file name with the date included
+# Define the log file name with the date included, e.g., 2025-02-19-SystemInfo.log
 $logFile = "$date-SystemInfo.log"
 
 # Remove the log file if it already exists to start fresh
@@ -78,3 +81,10 @@ foreach ($g in $gpu) {
     Write-Log "Adapter RAM: $([math]::Round(($g.AdapterRAM / 1GB), 2)) GB"
     Write-Log "Video Processor: $($g.VideoProcessor)"
 }
+
+# Notify the user that the script finished successfully and show the log file name
+Write-Host ""
+Write-Host "Success! Please check the $logFile"
+
+# Wait for the user to press "Enter" before exiting
+Read-Host -Prompt "Press 'Enter' to exit"
