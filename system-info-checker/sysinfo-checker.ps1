@@ -4,19 +4,28 @@ Author: Mchael Poncardas (https://github.com/poncardasm)
 Description: A script to gather system information.
 #>
 
-# Define the log file path
-$logFile = "SystemInfo.log"
+# Get the current date in the desired format (YYYY-MM-DD)
+$date = Get-Date -Format "yyyy-MM-dd"
+
+# Define the log file name with the date included
+$logFile = "$date-SystemInfo.log"
 
 # Remove the log file if it already exists to start fresh
 if (Test-Path $logFile) {
-  Remove-Item $logFile
+    Remove-Item $logFile
 }
 
 # Function to write text to the log file
 function Write-Log {
-  param ([string]$text)
-  $text | Out-File -FilePath $logFile -Append
+    param ([string]$text)
+    $text | Out-File -FilePath $logFile -Append
 }
+
+# Write a header with the date inside the log file
+Write-Log "=== System Information Log ==="
+Write-Log "Log Date: $date"
+Write-Log "-----------------------------------"
+Write-Log ""
 
 # Retrieve operating system information
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
@@ -52,20 +61,20 @@ Write-Log "=== Memory (RAM) Information ==="
 Write-Log "Total Visible Memory: $totalMemoryGB GB"
 Write-Log "Detailed Module Info:"
 foreach ($mod in $memory) {
-  $capacityGB = [math]::Round(($mod.Capacity / 1GB), 2)
-  Write-Log "---------------------------------"
-  Write-Log "Manufacturer: $($mod.Manufacturer)"
-  Write-Log "Capacity: $capacityGB GB"
-  Write-Log "Speed: $($mod.Speed) MHz"
+    $capacityGB = [math]::Round(($mod.Capacity / 1GB), 2)
+    Write-Log "---------------------------------"
+    Write-Log "Manufacturer: $($mod.Manufacturer)"
+    Write-Log "Capacity: $capacityGB GB"
+    Write-Log "Speed: $($mod.Speed) MHz"
 }
 Write-Log ""
 
 # Write GPU Information
 Write-Log "=== GPU Information ==="
 foreach ($g in $gpu) {
-  Write-Log "---------------------------------"
-  Write-Log "Name: $($g.Name)"
-  Write-Log "Driver Version: $($g.DriverVersion)"
-  Write-Log "Adapter RAM: $([math]::Round(($g.AdapterRAM / 1GB), 2)) GB"
-  Write-Log "Video Processor: $($g.VideoProcessor)"
+    Write-Log "---------------------------------"
+    Write-Log "Name: $($g.Name)"
+    Write-Log "Driver Version: $($g.DriverVersion)"
+    Write-Log "Adapter RAM: $([math]::Round(($g.AdapterRAM / 1GB), 2)) GB"
+    Write-Log "Video Processor: $($g.VideoProcessor)"
 }
