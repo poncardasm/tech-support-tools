@@ -82,15 +82,41 @@ Write-Log "=== Memory (RAM) Information ==="
 Write-Log "================================"
 Write-Log "Total Visible Memory: $totalMemoryGB GB"
 Write-Log "Detailed Module Info:"
-foreach ($mod in $memory) {
+
+# Create a mapping for SMBIOSMemoryType
+$memoryTypeMapping = @{
+    24 = "DDR3"
+    26 = "DDR4"
+    30 = "DDR5"
+}
+
+# Get memory information using both methods
+$detailedMemory = Get-WmiObject -Class "Win32_PhysicalMemory"
+$memoryInfo = Get-CimInstance -ClassName Win32_PhysicalMemory
+
+# Combine the information from both sources
+for ($i = 0; $i -lt $detailedMemory.Count; $i++) {
+    $mod = $detailedMemory[$i]
+    $cimMod = $memoryInfo[$i]
+    
     $capacityGB = [math]::Round(($mod.Capacity / 1GB), 2)
+    
+    # Get memory type using SMBIOSMemoryType
+    $memoryType = "Unknown"
+    if ($null -ne $mod.SMBIOSMemoryType -and $memoryTypeMapping.ContainsKey($mod.SMBIOSMemoryType)) {
+        $memoryType = $memoryTypeMapping[$mod.SMBIOSMemoryType]
+    }
+    
     Write-Log "---------------------------------"
     Write-Log "Manufacturer: $($mod.Manufacturer)"
     Write-Log "Capacity: $capacityGB GB"
-    Write-Log "Speed: $($mod.Speed) MHz"
-    Write-Log "Form Factor: $($mod.FormFactor)"
-    Write-Log "Part Number: $($mod.PartNumber)"
+    Write-Log "Speed: $($mod.ConfiguredClockSpeed) MHz"
+    Write-Log "DDR Version: $memoryType"
+    Write-Log "Form Factor: $($cimMod.FormFactor)"
+    Write-Log "Part Number: $($cimMod.PartNumber)"
+    Write-Log "Configured Voltage: $($mod.ConfiguredVoltage) mV"
 }
+
 Write-Log ""
 
 # Write GPU Information
