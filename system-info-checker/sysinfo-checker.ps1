@@ -46,7 +46,9 @@ $memory = Get-CimInstance -ClassName Win32_PhysicalMemory
 $gpu = Get-CimInstance -ClassName Win32_VideoController
 
 # Write Operating System Information
+Write-Log "===================================="
 Write-Log "=== Operating System Information ==="
+Write-Log "===================================="
 Write-Log "Caption: $($os.Caption)"
 Write-Log "Version: $($os.Version)"
 Write-Log "Build Number: $($os.BuildNumber)"
@@ -54,7 +56,9 @@ Write-Log "OS Architecture: $($os.OSArchitecture)"
 Write-Log ""
 
 # Write CPU Information
+Write-Log "======================="
 Write-Log "=== CPU Information ==="
+Write-Log "======================="
 Write-Log "Name: $($cpu.Name)"
 Write-Log "Number Of Cores: $($cpu.NumberOfCores)"
 Write-Log "Number Of Logical Processors: $($cpu.NumberOfLogicalProcessors)"
@@ -62,7 +66,9 @@ Write-Log "Max Clock Speed: $($cpu.MaxClockSpeed) MHz"
 Write-Log ""
 
 # Write Motherboard Information
+Write-Log "==============================="
 Write-Log "=== Motherboard Information ==="
+Write-Log "==============================="
 Write-Log "Manufacturer: $($motherboard.Manufacturer)"
 Write-Log "Product: $($motherboard.Product)"
 Write-Log "Version: $($motherboard.Version)"
@@ -71,7 +77,9 @@ Write-Log ""
 
 # Write Memory (RAM) Information
 $totalMemoryGB = [math]::Round(($os.TotalVisibleMemorySize / 1MB), 2)
+Write-Log "================================"
 Write-Log "=== Memory (RAM) Information ==="
+Write-Log "================================"
 Write-Log "Total Visible Memory: $totalMemoryGB GB"
 Write-Log "Detailed Module Info:"
 foreach ($mod in $memory) {
@@ -80,11 +88,15 @@ foreach ($mod in $memory) {
     Write-Log "Manufacturer: $($mod.Manufacturer)"
     Write-Log "Capacity: $capacityGB GB"
     Write-Log "Speed: $($mod.Speed) MHz"
+    Write-Log "Form Factor: $($mod.FormFactor)"
+    Write-Log "Part Number: $($mod.PartNumber)"
 }
 Write-Log ""
 
 # Write GPU Information
+Write-Log "======================="
 Write-Log "=== GPU Information ==="
+Write-Log "======================="
 foreach ($g in $gpu) {
     Write-Log "---------------------------------"
     Write-Log "Name: $($g.Name)"
@@ -106,4 +118,3 @@ Write-Host "Success! Please check the $logFile"
 
 # Wait for the user to press "Enter" before exiting
 Read-Host -Prompt "Press 'Enter' to exit"
-
