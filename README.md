@@ -19,6 +19,27 @@ The goal of this repository is to serve as a centralized hub for practical tools
   - A tool that checks disk space usage and identifies large files and folders, helping in the clean-up process.
 
 - **Performance Monitor**
+
   - A script that monitors system performance metrics such as CPU usage, memory consumption, and response times for applications.
 
+- **Software Inventory Tool**
+
+  - A script that lists installed software on a system, including version numbers and installation dates.
+
+- [**Diagnostic Test Runner**](#)
+  - Automate a series of diagnostic tests to quickly identify common issues.
+  - Check network connectivity (ping, DNS resolution, etc.).
+  - Test hardware components (disk health, memory usage).
+  - Verify critical software installations and configurations.
+  - Log results to a file for further analysis.
+  - Speeds up the troubleshooting process by running multiple tests at once and providing a clear report.
+
 > More tools can be added as they are developed or contributed.
+
+## Usage
+
+Note: You might need to adjust PowerShell's execution policy to run scripts:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
