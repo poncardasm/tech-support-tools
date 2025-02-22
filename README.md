@@ -36,7 +36,11 @@ The goal of this repository is to serve as a centralized hub for practical tools
   - Speeds up the troubleshooting process by running multiple tests at once and providing a clear report.
 
 - [**Clean Temp Files**](./clean-temp-file/)
+
   - A script that deletes temporary files, cache, and other unnecessary data to free up disk space and improve system performance.
+
+- **App CPU and Memory Usage**
+  - Identify top 10 processes consuming the most CPU and RAM.
 
 > More tools can be added as they are developed or contributed.
 
