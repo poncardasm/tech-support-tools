@@ -27,12 +27,16 @@ The goal of this repository is to serve as a centralized hub for practical tools
   - A script that lists installed software on a system, including version numbers and installation dates.
 
 - [**Diagnostic Test Runner**](#)
+
   - Automate a series of diagnostic tests to quickly identify common issues.
   - Check network connectivity (ping, DNS resolution, etc.).
   - Test hardware components (disk health, memory usage).
   - Verify critical software installations and configurations.
   - Log results to a file for further analysis.
   - Speeds up the troubleshooting process by running multiple tests at once and providing a clear report.
+
+- **Clean Temp Files**
+  - A script that deletes temporary files, cache, and other unnecessary data to free up disk space and improve system performance.
 
 > More tools can be added as they are developed or contributed.
 
