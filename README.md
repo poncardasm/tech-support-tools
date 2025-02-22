@@ -35,7 +35,7 @@ The goal of this repository is to serve as a centralized hub for practical tools
   - Log results to a file for further analysis.
   - Speeds up the troubleshooting process by running multiple tests at once and providing a clear report.
 
-- **Clean Temp Files**
+- [**Clean Temp Files**](./clean-temp-file/)
   - A script that deletes temporary files, cache, and other unnecessary data to free up disk space and improve system performance.
 
 > More tools can be added as they are developed or contributed.
