@@ -6,7 +6,7 @@ The goal of this repository is to serve as a centralized hub for practical tools
 
 ## Tools
 
-- [**System Info Checker**](https://github.com/poncardasm/tech-support-tools/tree/main/system-info-checker)
+- [**System Info Checker**](./system-info-checker/)
 
   - A PowerShell script that gathers detailed system information including operating system, CPU, motherboard, memory, and GPU details. The tool generates a dated log file for easy reference.
 
@@ -39,14 +39,20 @@ The goal of this repository is to serve as a centralized hub for practical tools
 
   - A script that deletes temporary files, cache, and other unnecessary data to free up disk space and improve system performance.
 
-- **App CPU and Memory Usage**
+- [**App CPU and Memory Usage**](./app-cpu-memory-usage/)
+
   - Identify top 10 processes consuming the most CPU and RAM.
 
-> More tools can be added as they are developed or contributed.
+- [**Text Transform**](./text-transform/)
+
+  - Transforms text by converting it to lowercase and replacing spaces with hyphens.
+
+- [**Backup Script**](./backup-script/)
+  - Creates incremental backups using `rsync` and manages retention of old backups.
 
 ## Usage
 
-Note: You might need to adjust PowerShell's execution policy to run scripts:
+Note: You might need to adjust PowerShell's execution policy to run `.ps1` scripts:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned

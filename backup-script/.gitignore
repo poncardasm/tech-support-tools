@@ -1,0 +1,44 @@
+# Logs
+*.log
+backup.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS Finder metadata
+Icon?
+._*
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+
+# Linux system files
+*~
+.nfs*
+
+# Shell history and environment files
+*.sh~
+*.sh.bak
+*.sh.swp
+
+# Exclude compiled or binary files (if any are generated)
+*.out
+*.o
+*.exe
+
+# Others
+old_backup.sh
