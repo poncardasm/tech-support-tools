@@ -29,26 +29,35 @@ for src in "${SOURCE_DIRS[@]}"; do
     # Extract only the basename of the source directory (e.g., "files-to-be-backup")
     TARGET_DIR=$(basename "$src")
 
-    # Build the rsync command
-    RSYNC_CMD="rsync -av --delete"
-    
-    # Add exclusions to the rsync command
+    # Build the rsync command as an array
+    # Start with the base options
+    RSYNC_CMD_ARRAY=(rsync -av --delete)
+
+    # Add exclusions to the rsync command array
     for pattern in "${EXCLUDE_PATTERNS[@]}"; do
-        RSYNC_CMD+=" --exclude=$pattern"
+        RSYNC_CMD_ARRAY+=(--exclude="$pattern")
     done
 
-    # If we have a previous backup, use it as a reference
+    # If we have a previous backup, add the --link-dest option
     if [ -d "$LATEST_LINK" ]; then
-        RSYNC_CMD+=" --link-dest=$LATEST_LINK/$TARGET_DIR"
+        RSYNC_CMD_ARRAY+=(--link-dest="$LATEST_LINK/$TARGET_DIR")
     fi
 
-    # Run rsync and capture its output
+    # Add the source and destination paths to the array
+    # Note the trailing slash on the source directory is important for rsync
+    RSYNC_CMD_ARRAY+=("$src/")
+    RSYNC_CMD_ARRAY+=("$BACKUP_DIR/$TARGET_DIR/")
+
+    # Run rsync using the command array and capture its output
     echo "[$(date)] Backing up $src to $BACKUP_DIR/$TARGET_DIR" >> "$LOG_FILE"
-    if ! eval "$RSYNC_CMD \"$src/\" \"$BACKUP_DIR/$TARGET_DIR/\"" >> "$LOG_FILE" 2>&1; then
+    # Execute the command array directly.
+    # The "${RSYNC_CMD_ARRAY[@]}" expands the array elements correctly.
+    if ! "${RSYNC_CMD_ARRAY[@]}" >> "$LOG_FILE" 2>&1; then
         echo "[$(date)] Error: rsync failed for $src" >> "$LOG_FILE"
         exit 1
     fi
 done
+
 
 # Update the "latest" symlink
 rm -f "$LATEST_LINK"
