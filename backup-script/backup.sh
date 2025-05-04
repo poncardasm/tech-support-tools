@@ -2,15 +2,30 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
-# Configuration
-SOURCE_DIRS=("/path/to/files-to-be-backup")             # Directories to backup
-BACKUP_ROOT="/path/to/backup-location"                  # Where backups will be stored
+# --- Load Configuration ---
+
+# Define the path to the configuration file
+CONFIG_FILE="./backup.conf" # Adjust this path as needed
+
+# Check if the configuration file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: Configuration file not found at $CONFIG_FILE" >&2 # Output error to stderr
+    exit 1
+fi
+
+# Source (load) the configuration file
+source "$CONFIG_FILE"
+
+# --- End Configuration Loading ---
+
+
+# Derived Configuration Variables (calculated after loading the config)
 DATETIME=$(date "+%Y-%m-%d_%H-%M")                      # Timestamp for backup
 LATEST_LINK="$BACKUP_ROOT/latest"                       # Symlink to latest backup
-# Define the log file path using the timestamp
 BACKUP_LOG_FILE="$BACKUP_ROOT/${DATETIME}_backup.log" # Unique log file for this backup run
-RETENTION_DAYS=3                                        # Number of days to keep old backups
-EXCLUDE_PATTERNS=(".DS_Store" "*.tmp")                  # Patterns to exclude from backup
+
+
+# --- Script Logic ---
 
 # Create backup root if it doesn't exist
 mkdir -p "$BACKUP_ROOT"
@@ -20,7 +35,6 @@ BACKUP_DIR="$BACKUP_ROOT/$DATETIME"
 mkdir -p "$BACKUP_DIR"
 
 # Add a separator line to the new log file
-# Use > for the first write to create/overwrite the file
 echo "============================================================" > "$BACKUP_LOG_FILE"
 echo "[$(date)] Starting new backup session" >> "$BACKUP_LOG_FILE"
 echo "============================================================" >> "$BACKUP_LOG_FILE"
@@ -29,14 +43,25 @@ echo "============================================================" >> "$BACKUP_
 echo "[$(date)] Starting backup to $BACKUP_DIR" >> "$BACKUP_LOG_FILE"
 
 # Perform the backup (using the array method)
-for src in "${SOURCE_DIRS[@]}"; do
+# We need to convert the space-separated strings from the config file
+# into shell arrays.
+
+# Convert SOURCE_DIRS string to an array
+read -r -a SOURCE_DIRS_ARRAY <<< "$SOURCE_DIRS"
+
+# Convert EXCLUDE_PATTERNS string to an array
+read -r -a EXCLUDE_PATTERNS_ARRAY <<< "$EXCLUDE_PATTERNS"
+
+
+for src in "${SOURCE_DIRS_ARRAY[@]}"; do
     # Extract only the basename of the source directory (e.g., "files-to-be-backup")
     TARGET_DIR=$(basename "$src")
 
     # Build the rsync command as an array
     RSYNC_CMD_ARRAY=(rsync -av --delete)
 
-    for pattern in "${EXCLUDE_PATTERNS[@]}"; do
+    # Add exclusions from the exclude patterns array
+    for pattern in "${EXCLUDE_PATTERNS_ARRAY[@]}"; do
         RSYNC_CMD_ARRAY+=(--exclude="$pattern")
     done
 
@@ -51,9 +76,6 @@ for src in "${SOURCE_DIRS[@]}"; do
     echo "[$(date)] Backing up $src to $BACKUP_DIR/$TARGET_DIR" >> "$BACKUP_LOG_FILE"
     if ! "${RSYNC_CMD_ARRAY[@]}" >> "$BACKUP_LOG_FILE" 2>&1; then
         echo "[$(date)] Error: rsync failed for $src" >> "$BACKUP_LOG_FILE"
-        # You might want to log a *separate* critical error message
-        # to a *different* file or system log here as well,
-        # so you don't miss rsync failures if you only check the individual backup logs.
         exit 1
     fi
 done
@@ -64,8 +86,6 @@ ln -s "$BACKUP_DIR" "$LATEST_LINK"
 
 # Retention policy: delete backups older than RETENTION_DAYS
 echo "[$(date)] Cleaning up backups older than $RETENTION_DAYS days" >> "$BACKUP_LOG_FILE"
-# You'll also want to clean up the old log files that correspond to deleted backups.
-# We can modify the find command to find directories and log files.
 find "$BACKUP_ROOT" -mindepth 1 -maxdepth 1 \
     \( -type d -o -name "*_backup.log" \) \
     -mtime +$RETENTION_DAYS \
