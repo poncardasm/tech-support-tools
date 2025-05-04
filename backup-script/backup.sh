@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # Exit immediately if a command exits with a non-zero status.
+
 # Configuration
 SOURCE_DIRS=("/path/to/files-to-be-backup")             # Directories to backup
 BACKUP_ROOT="/path/to/backup-location"                  # Where backups will be stored
