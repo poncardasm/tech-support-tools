@@ -40,7 +40,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 
@@ -76,11 +75,6 @@ celerybeat-schedule
 # Environments
 .env
 .venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -99,9 +93,7 @@ venv.bak/
 # Bash Scripts
 # =========================
 
-# Temporary files
-*.tmp
-*.bak
+# Temporary files (handled below)
 
 # =========================
 # PowerShell Scripts
@@ -111,9 +103,7 @@ venv.bak/
 *.ps1xml
 *.cdxml
 *.dll
-*.exe
 *.pdb
-*.tmp
 
 # =========================
 # Operating System Files
@@ -123,11 +113,8 @@ venv.bak/
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Thumbnails
+Icon?
 ._*
-
-# Files that might appear on external disk
 .Spotlight-V100
 .Trashes
 
@@ -136,9 +123,11 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+System Volume Information/
 
 # Linux
 *~
+.nfs*
 
 # =========================
 # IDE and Editor Files
@@ -162,7 +151,6 @@ $RECYCLE.BIN/
 *.swn
 
 # Emacs
-*~
 \#*\#
 .#*
 .\#*
@@ -172,6 +160,7 @@ $RECYCLE.BIN/
 # =========================
 
 *.log
+backup.log
 *.sqlite
 *.db
 
@@ -182,6 +171,7 @@ $RECYCLE.BIN/
 # Backup files
 *.bak
 *.old
+*.orig
 
 # Lock files
 *.lock
@@ -191,6 +181,19 @@ $RECYCLE.BIN/
 
 # Temp files
 *.tmp
+
+# Exclude compiled or binary files
+*.out
+*.o
+*.exe
+
+# Shell history and environment files
+*.sh~
+*.sh.bak
+*.sh.swp
+
+# Others
+old_backup.sh
 
 # =========================
 # Custom Ignore Rules
