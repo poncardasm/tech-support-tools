@@ -1,7 +1,7 @@
 # Get-TopProcesses
 
-**Author:** Mchael Poncardas
-**Version:** 1.0.0
+**Author:** Mchael Poncardas<br>
+**Version:** 1.0.0<br>
 **Platform:** Windows PowerShell 5.1+
 
 ## Overview
@@ -60,11 +60,11 @@ Display top 10 processes by CPU usage:
 
 ## Parameters
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| TopCount | int | No | 10 | Number of top processes to return (1-100) |
-| SortBy | string | No | CPU | Sort by 'CPU' or 'RAM' |
-| ExportPath | string | No | - | Path to export results as CSV |
+| Parameter  | Type   | Required | Default | Description                               |
+| ---------- | ------ | -------- | ------- | ----------------------------------------- |
+| TopCount   | int    | No       | 10      | Number of top processes to return (1-100) |
+| SortBy     | string | No       | CPU     | Sort by 'CPU' or 'RAM'                    |
+| ExportPath | string | No       | -       | Path to export results as CSV             |
 
 ## Output
 
@@ -110,14 +110,17 @@ Teams           28.90    678.30
 ## Troubleshooting
 
 **No output returned:**
+
 - Check that you have permission to query process information
 - Try running with `-Verbose` to see diagnostic messages
 
 **Export path error:**
+
 - Ensure the directory exists before exporting
 - Check write permissions on the target directory
 
 **Process information incomplete:**
+
 - Some system processes may not report CPU usage if recently started
 - This is normal Windows behavior
 
