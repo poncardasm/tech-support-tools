@@ -2,53 +2,31 @@
 
 A collection of practical tools for technical support specialists. This repository houses a variety of scripts and utilities designed to simplify system diagnostics, troubleshooting, and day-to-day technical support tasks.
 
-The goal of this repository is to serve as a centralized hub for practical tools that assist technical support specialists in their everyday tasks. By consolidating these utilities in one place, routine troubleshooting and system maintenance become more efficient and streamlined.
+I created this repository with the goal to build a centralized hub for practical tools that assist technical support specialists in their everyday tasks. By consolidating these utilities in one place, routine troubleshooting and system maintenance become more efficient and streamlined.
 
 ## Tools
 
-- [**System Info Checker**](./system-info-checker/)
+### Windows (PowerShell)
 
-  - A PowerShell script that gathers detailed system information including operating system, CPU, motherboard, memory, and GPU details. The tool generates a dated log file for easy reference.
+- [**CPU and RAM Usage**](./windows/cpu-ram-usage/)
 
-- **Network Diagnostic Tool**
+  - Identifies the top 10 processes consuming the most CPU and RAM.
 
-  - A script that tests network connectivity and retrieves information about network interfaces and current connections. A log file is also generated for analysis.
+### macOS (Bash)
 
-- **Disk Usage Analyzer**
+- [**Backup Script**](./macos/backup-script/)
 
-  - A tool that checks disk space usage and identifies large files and folders, helping in the clean-up process.
+  - Creates incremental backups using `rsync` with hard-link support.
+  - Uses configuration file for customizable settings.
+  - Manages retention of old backups based on specified retention period.
+  - Generates timestamped log files for backup operations.
 
-- **Performance Monitor**
+### Web Applications
 
-  - A script that monitors system performance metrics such as CPU usage, memory consumption, and response times for applications.
+- [**Slugify**](./web-app/slugify/)
 
-- **Software Inventory Tool**
-
-  - A script that lists installed software on a system, including version numbers and installation dates.
-
-- [**Diagnostic Test Runner**](#)
-
-  - Automate a series of diagnostic tests to quickly identify common issues.
-  - Check network connectivity (ping, DNS resolution, etc.).
-  - Test hardware components (disk health, memory usage).
-  - Verify critical software installations and configurations.
-  - Log results to a file for further analysis.
-  - Speeds up the troubleshooting process by running multiple tests at once and providing a clear report.
-
-- [**Clean Temp Files**](./clean-temp-file/)
-
-  - A script that deletes temporary files, cache, and other unnecessary data to free up disk space and improve system performance.
-
-- [**App CPU and Memory Usage**](./app-cpu-memory-usage/)
-
-  - Identify top 10 processes consuming the most CPU and RAM.
-
-- [**Text Transform**](./text-transform/)
-
-  - Transforms text by converting it to lowercase and replacing spaces with hyphens.
-
-- [**Backup Script**](./backup-script/)
-  - Creates incremental backups using `rsync` and manages retention of old backups.
+  - Browser-based text transformation tool that converts text to lowercase and replaces spaces with hyphens (slug format).
+  - Standalone HTML/CSS/JavaScript application with no dependencies.
 
 ## Usage
 
