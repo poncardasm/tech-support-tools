@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a collection of cross-platform technical support tools organized by operating system. The tools are standalone scripts designed for system diagnostics, troubleshooting, and maintenance tasks.
 
+**Author**: Mchael Poncardas ([https://github.com/poncardasm](https://github.com/poncardasm))
+
 ## Repository Structure
 
 The codebase is organized by platform:
@@ -23,6 +25,7 @@ Each tool is self-contained in its own subdirectory with minimal dependencies.
 All Windows scripts use PowerShell `.ps1` format and follow these conventions:
 
 - **Header format**: Include author and description comments at the top
+
   ```powershell
   <#
   Tool Name
@@ -46,10 +49,12 @@ All Windows scripts use PowerShell `.ps1` format and follow these conventions:
 Bash scripts for macOS follow these conventions:
 
 - **Configuration-driven**: Scripts use separate `.conf` files to store user settings
+
   - Source config files with `source "$CONFIG_FILE"`
   - Check for config file existence before sourcing
 
 - **Backup script architecture** (macos/backup-script/):
+
   - Uses `rsync` with `--link-dest` for incremental backups
   - Configuration in `backup.conf`:
     - `SOURCE_DIRS` - Space-separated list of directories to backup (quoted if containing spaces)
@@ -80,6 +85,7 @@ Since these are standalone scripts without a test framework:
 - **Windows scripts**: Test manually by running in PowerShell. Check that log files are generated correctly and contain expected system information.
 
 - **macOS backup script**: Always test with dummy data first before using on critical data. Verify:
+
   - Backup directories are created with correct timestamps
   - `rsync` properly links to previous backup
   - Retention cleanup works as expected
@@ -99,14 +105,17 @@ The macOS backup script uses a configuration pattern that could be extended to o
 ## Common Patterns
 
 ### Log File Naming
+
 - Format: `YYYY-MM-DD-ToolName.log` for Windows tools
 - Format: `YYYY-MM-DD_HH-MM_backup.log` for macOS backup logs
 
 ### User Interaction
+
 - Windows: Use `Read-Host -Prompt` for start and exit prompts
 - Display success message showing the log file name
 
 ### Error Handling
+
 - Bash: Use `set -e` and check for required files/directories
 - PowerShell: Use `-ErrorAction SilentlyContinue` for expected failures (like cleaning temp files)
 
