@@ -172,7 +172,7 @@ Does this PRD meet your requirements? Would you like me to:
 - Adjust the scope?
 - Modify any technical specifications?
 
-Once you approve, I'll generate the script following these requirements and the powershell-tech-support-script-development-rules.md guidelines.
+Once you approve, I'll generate the script following these requirements and the powershell-standards.md guidelines.
 
 ## Important Rules
 
@@ -183,7 +183,7 @@ Once you approve, I'll generate the script following these requirements and the 
 - ✅ Be specific in PRD requirements - avoid vague descriptions
 - ✅ Consider security and safety in every PRD
 - ✅ Make PRD realistic for a portfolio project (not enterprise-scale)
-- ✅ Reference `powershell-tech-support-script-development-rules.md` standards
+- ✅ Reference `powershell-standards.md` standards
 - ❌ Don't skip clarifying questions
 - ❌ Don't make assumptions without asking
 - ❌ Don't write code until PRD is approved
