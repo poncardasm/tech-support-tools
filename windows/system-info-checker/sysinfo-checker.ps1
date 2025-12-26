@@ -49,16 +49,10 @@
 
 .NOTES
     Author: Mchael Poncardas (m@poncardas.com)
-    Version: 2.0.0
-    Last Updated: 2025-12-22
+    Version: 2.1
+    Last Updated: 2025-12-26
     Requires: PowerShell 5.1 or later
     Requires Administrator: No
-
-    Changelog:
-        2.0.0 - Complete refactor to meet PowerShell standards
-                Added proper error handling, parameters, and object output
-                Added verbose and debug support
-        1.0.0 - Initial release
 
 .LINK
     https://github.com/poncardasm/tech-support-tools
@@ -200,8 +194,8 @@ try {
         Write-Host "|                detailed report.                                             |"
         Write-Host "| Author       : Mchael Poncardas                                             |"
         Write-Host "| Email        : m@poncardas.com                                              |"
-        Write-Host "| Version      : 2.0.0                                                        |"
-        Write-Host "| Last Updated : 2025-12-22                                                   |"
+        Write-Host "| Version      : 2.1                                                          |"
+        Write-Host "| Last Updated : 2025-12-26                                                   |"
         Write-Host "| Requires     : PowerShell 5.1 or later                                      |"
         Write-Host "+-----------------------------------------------------------------------------+"
         Write-Host ""
@@ -216,8 +210,8 @@ try {
     Write-Log "|                detailed report.                                             |"
     Write-Log "| Author       : Mchael Poncardas                                             |"
     Write-Log "| Email        : m@poncardas.com                                              |"
-    Write-Log "| Version      : 2.0.0                                                        |"
-    Write-Log "| Last Updated : 2025-12-22                                                   |"
+    Write-Log "| Version      : 2.1                                                          |"
+    Write-Log "| Last Updated : 2025-12-26                                                   |"
     Write-Log "| Requires     : PowerShell 5.1 or later                                      |"
     Write-Log "+-----------------------------------------------------------------------------+"
     Write-Log ""
