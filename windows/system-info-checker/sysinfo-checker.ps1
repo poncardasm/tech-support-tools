@@ -454,6 +454,8 @@ try {
     # Success message
     if (-not $NoLogFile) {
         Write-Host "Success! Please check the $script:logFile"
+        Write-Host "Opening log file..."
+        Invoke-Item $script:logFile
         Read-Host -Prompt "Press 'Enter' to exit"
     }
     else {
