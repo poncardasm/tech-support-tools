@@ -16,6 +16,9 @@
 .PARAMETER ExportPath
     Optional path to export results as CSV file. If not specified, results are displayed in console only.
 
+.PARAMETER Quiet
+    Suppresses the interactive banner and runs silently. Useful for scripting and automation.
+
 .EXAMPLE
     Get-TopProcesses
     Returns top 10 processes sorted by CPU usage
@@ -33,9 +36,9 @@
     Returns top 15 processes and exports to CSV file
 
 .NOTES
-    Author: Mchael Poncardas
-    Version: 1.0.0
-    Last Updated: 2025-12-22
+    Author: Mchael Poncardas (m@poncardas.com)
+    Version: 1.1
+    Last Updated: 2025-12-26
     Requires: PowerShell 5.1 or later
     Required Modules: None
     Requires Administrator: No
@@ -56,8 +59,29 @@ param(
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$ExportPath
+    [string]$ExportPath,
+
+    [Parameter()]
+    [switch]$Quiet
 )
+
+# Display banner (unless -Quiet is specified)
+if (-not $Quiet) {
+    Write-Host ""
+    Write-Host "+-----------------------------------------------------------------------------+"
+    Write-Host "|                          TOP PROCESSES MONITOR                              |"
+    Write-Host "+-----------------------------------------------------------------------------+"
+    Write-Host "| About        : Retrieves running processes and displays the top N by CPU    |"
+    Write-Host "|                or RAM usage for performance analysis and troubleshooting.   |"
+    Write-Host "| Author       : Mchael Poncardas                                             |"
+    Write-Host "| Email        : m@poncardas.com                                              |"
+    Write-Host "| Version      : 1.1                                                          |"
+    Write-Host "| Last Updated : 2025-12-26                                                   |"
+    Write-Host "| Requires     : PowerShell 5.1 or later                                      |"
+    Write-Host "+-----------------------------------------------------------------------------+"
+    Write-Host ""
+    Read-Host -Prompt "Press 'Enter' key to run Top Processes Monitor"
+}
 
 try {
     Write-Verbose "Starting process analysis..."
