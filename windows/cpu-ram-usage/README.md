@@ -1,7 +1,7 @@
 # Get-TopProcesses
 
-**Author:** Mchael Poncardas<br>
-**Version:** 1.0.0<br>
+**Author:** Mchael Poncardas <br>
+**Version:** 1.0.0 <br>
 **Platform:** Windows PowerShell 5.1+
 
 ## Overview
@@ -76,14 +76,16 @@ Returns PowerShell objects with the following properties:
 
 ### Example Output
 
-```
-Name           CPU(s) RAM (MB)
-----           ------ --------
-chrome         145.23   1024.50
-Code            89.12    856.25
-pwsh            45.67    312.75
-Slack           32.45    445.80
-Teams           28.90    678.30
+```md
+Name CPU(s) RAM (MB)
+
+---
+
+chrome 145.23 1024.50
+Code 89.12 856.25
+pwsh 45.67 312.75
+Slack 32.45 445.80
+Teams 28.90 678.30
 ```
 
 ## Use Cases

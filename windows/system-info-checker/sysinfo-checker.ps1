@@ -48,7 +48,7 @@
     Creates the log file and also captures the system information as objects for further processing.
 
 .NOTES
-    Author: Mchael Poncardas
+    Author: Mchael Poncardas (m@poncardas.com)
     Version: 2.0.0
     Last Updated: 2025-12-22
     Requires: PowerShell 5.1 or later
@@ -97,6 +97,7 @@ function Write-Log {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
+        [AllowEmptyString()]
         [string]$Text
     )
 
@@ -191,10 +192,35 @@ try {
 
     # Prompt user to start (maintaining original interactive behavior)
     if (-not $NoLogFile) {
+        Write-Host ""
+        Write-Host "+-----------------------------------------------------------------------------+"
+        Write-Host "|                             SYSTEM INFO CHECKER                             |"
+        Write-Host "+-----------------------------------------------------------------------------+"
+        Write-Host "| About        : Gathers comprehensive system information and generates a     |"
+        Write-Host "|                detailed report.                                             |"
+        Write-Host "| Author       : Mchael Poncardas                                             |"
+        Write-Host "| Email        : m@poncardas.com                                              |"
+        Write-Host "| Version      : 2.0.0                                                        |"
+        Write-Host "| Last Updated : 2025-12-22                                                   |"
+        Write-Host "| Requires     : PowerShell 5.1 or later                                      |"
+        Write-Host "+-----------------------------------------------------------------------------+"
+        Write-Host ""
         Read-Host -Prompt "Press 'Enter' key to run System Info checker"
     }
 
     # Write log header
+    Write-Log "+-----------------------------------------------------------------------------+"
+    Write-Log "|                             SYSTEM INFO CHECKER                             |"
+    Write-Log "+-----------------------------------------------------------------------------+"
+    Write-Log "| About        : Gathers comprehensive system information and generates a     |"
+    Write-Log "|                detailed report.                                             |"
+    Write-Log "| Author       : Mchael Poncardas                                             |"
+    Write-Log "| Email        : m@poncardas.com                                              |"
+    Write-Log "| Version      : 2.0.0                                                        |"
+    Write-Log "| Last Updated : 2025-12-22                                                   |"
+    Write-Log "| Requires     : PowerShell 5.1 or later                                      |"
+    Write-Log "+-----------------------------------------------------------------------------+"
+    Write-Log ""
     Write-Log "=== System Information Log ==="
     Write-Log "Log Date: $date"
     Write-Log "-----------------------------------"
@@ -427,7 +453,6 @@ try {
 
     # Success message
     if (-not $NoLogFile) {
-        Write-Information "Success! Please check the $script:logFile" -InformationAction Continue
         Write-Host "Success! Please check the $script:logFile"
         Read-Host -Prompt "Press 'Enter' to exit"
     }
