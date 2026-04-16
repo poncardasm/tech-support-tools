@@ -1,0 +1,1 @@
+Outlook calendar is not syncing with the server. User's email signature is missing and they cannot access their mailbox. The PST file might be corrupted.

@@ -1,0 +1,1 @@
+Need to install new software application. The program crashes on startup and shows compatibility errors. Update failed to apply. Blue screen appears when running the application.

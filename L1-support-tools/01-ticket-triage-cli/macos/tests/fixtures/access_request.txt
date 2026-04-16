@@ -1,0 +1,1 @@
+User needs access to the SharePoint folder for the marketing team. They also need permissions added to the Teams group and require elevated role access.

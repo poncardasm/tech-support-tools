@@ -1,0 +1,289 @@
+# =========================================================
+# macOS
+# =========================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# =========================================================
+# Windows
+# =========================================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+*.lnk
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# =========================================================
+# Linux
+# =========================================================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =========================================================
+# Editor / IDE
+# =========================================================
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+*.ipr
+*.iws
+.vs/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*.swn
+.*.sw?
+.vim/
+.netrwhist
+.history/
+.project
+.classpath
+.settings/
+nbproject/
+
+# =========================================================
+# Temp / Backup files
+# =========================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+
+# =========================================================
+# Shell / Batch / PowerShell artifacts
+# =========================================================
+*.bat.bak
+*.cmd.bak
+*.ps1.bak
+*.sh.bak
+*.out
+*.err
+
+# =========================================================
+# Script-generated backup artifacts (from this project)
+# =========================================================
+# Local test backups and logs should never be committed
+backup_log_*.txt
+Backup_*/
+.backup-target
+test-backups/
+sandbox/
+scratch/
+
+# =========================================================
+# Archives (typically not committed to a scripts repo)
+# =========================================================
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.gz
+*.bz2
+*.xz
+
+# =========================================================
+# Environment / Secrets
+# =========================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# =========================================================
+# Node / general tooling (in case docs tooling is added later)
+# =========================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# =========================================================
+# Python (in case helper scripts are added later)
+# =========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================================================
+# Docs build output
+# =========================================================
+_site/
+site/
+.docusaurus/
+dist/
+build/
+
+# =========================================================
+# Additional IDE / Editor
+# =========================================================
+*.code-workspace
+out/
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.tmproj
+*.tmproject
+tmtags
+.c9/
+*.launch
+
+# =========================================================
+# Environment / Secrets (extended)
+# =========================================================
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+*.crt
+*.secret
+config.local.json
+
+# =========================================================
+# Logs / Temp directories
+# =========================================================
+logs/
+tmp/
+temp/
+
+# =========================================================
+# Lock files
+# =========================================================
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# =========================================================
+# Python (extended)
+# =========================================================
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+vendor/
+.dmypy.json
+.pyre/
+.pytype/
+
+# =========================================================
+# Build outputs (extended)
+# =========================================================
+bin/
+obj/
+*.o
+*.class
+*.jar
+*.war
+*.ear
+*.exe
+*.dll
+*.dylib
+*.app
+
+# =========================================================
+# Test coverage
+# =========================================================
+coverage/
+.coverage
+.nyc_output/
+*.lcov
+htmlcov/
+
+# =========================================================
+# Playwright
+# =========================================================
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.local-browsers/
+/test-results.xml
+*.trace
+*.trace.zip
+playwright-report.html
+trace.zip
+
+# =========================================================
+# OS Package Manager
+# =========================================================
+.npm
+.eslintcache
+.stylelintcache
+.yarn-integrity
+
+# =========================================================
+# Database
+# =========================================================
+*.db
+*.sqlite
+*.sqlite3
+*.sql.bak
+
+# =========================================================
+# Tool-specific
+# =========================================================
+.firecrawl/
+*.dwl
+*.dwl2

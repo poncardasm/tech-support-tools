@@ -1,0 +1,1 @@
+User needs access to SharePoint site and Teams group. Requesting permissions for specific role and group membership. Access authorization needed for sensitive resource.

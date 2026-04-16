@@ -1,0 +1,1 @@
+VPN connection keeps dropping. User cannot connect to the corporate network from home. The firewall might be blocking the connection and they keep getting timeout errors.

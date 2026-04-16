@@ -1,0 +1,1 @@
+Printer is offline and print job stuck in queue. Driver needs reinstallation. Toner is empty and spooler service shows errors. Cannot print from any application.

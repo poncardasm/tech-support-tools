@@ -1,0 +1,1 @@
+User reports they cannot login to their EntraID account. The password expired and they need MFA reset as well. Access denied message appears when trying to sign in.

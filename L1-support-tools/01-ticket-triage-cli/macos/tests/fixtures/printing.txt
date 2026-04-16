@@ -1,0 +1,1 @@
+Printer is not working on the 3rd floor. Print jobs are stuck in the queue and the driver needs to be updated. The spooler service might need restarting.

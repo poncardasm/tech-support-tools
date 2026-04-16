@@ -1,0 +1,56 @@
+categories:
+  authentication:
+    keywords: [password, login, MFA, SSO, EntraID, locked, "access denied", credential, signin, sign-in]
+    escalation: "L2 if MFA not working or account locked"
+    suggested_action: "Reset EntraID password via Admin Center"
+    kb: "KB-1001"
+    priority_bump: 0
+
+  network:
+    keywords: [VPN, connection, network, firewall, timeout, "cannot connect", "internet down", wifi, proxy, dns]
+    escalation: "L2 if VPN profile corrupted"
+    suggested_action: "Check VPN connection and reconnect"
+    kb: "KB-1005"
+    priority_bump: 0
+
+  email:
+    keywords: [outlook, email, calendar, mailbox, PST, OST, signature, exchange, gmail, thunderbird]
+    escalation: "L2 if Exchange server issue"
+    suggested_action: "Check email account settings and restart Outlook"
+    kb: "KB-1008"
+    priority_bump: 0
+
+  hardware:
+    keywords: [laptop, monitor, keyboard, mouse, "hardware failure", device, screen, battery, charger, usb]
+    escalation: "L2 immediate - hardware failure"
+    suggested_action: "Check device connections and power cycle"
+    kb: "KB-1012"
+    priority_bump: 0
+
+  software:
+    keywords: [install, uninstall, update, crash, "blue screen", application, app, error, bug, freeze]
+    escalation: "L2 if system crash or blue screen"
+    suggested_action: "Restart application or reinstall software"
+    kb: "KB-1015"
+    priority_bump: 0
+
+  access_request:
+    keywords: [access, permissions, SharePoint, Teams, group, role, folder, file, drive, permission]
+    escalation: "L2 if elevated admin access required"
+    suggested_action: "Verify access requirements and submit request via portal"
+    kb: "KB-1020"
+    priority_bump: 0
+
+  printing:
+    keywords: [printer, print, "print job", driver, spooler, scanning, scanner, copier]
+    escalation: "L2 if printer driver or spooler issue"
+    suggested_action: "Check printer status and restart print spooler"
+    kb: "KB-1025"
+    priority_bump: 0
+
+  other:
+    keywords: []
+    escalation: "None"
+    suggested_action: "Review ticket manually"
+    kb: "N/A"
+    priority_bump: 0

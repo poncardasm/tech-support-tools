@@ -1,0 +1,1 @@
+User cannot login to their account. The password expired yesterday and they are locked out of EntraID. They tried resetting the password but MFA is not working.

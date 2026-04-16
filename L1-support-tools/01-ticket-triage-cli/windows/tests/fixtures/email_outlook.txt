@@ -1,0 +1,1 @@
+Outlook keeps crashing when opening email. The mailbox shows PST/OST file errors. User needs help setting up email signature and calendar is not syncing properly.

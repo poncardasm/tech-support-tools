@@ -1,0 +1,69 @@
+categories:
+  authentication:
+    keywords: [password, login, mfa, sso, entraid, locked, "access denied", "account locked", "sign in", "cannot access", "reset password"]
+    escalation: L2 if MFA or account locked; Security team if breach suspected
+    suggested_action: Reset EntraID password via Admin Center and verify MFA registration
+    kb: KB-1001
+    priority_bump: 0
+
+  network_vpn:
+    keywords: [vpn, connection, network, firewall, "cannot connect", timeout, "internet down", "no connection", "network access", remote access, sslvpn, cisco anyconnect]
+    escalation: L2 if VPN profile corrupted or network infrastructure issue
+    suggested_action: Check VPN connection, verify credentials, test alternative connection method
+    kb: KB-1002
+    priority_bump: 0
+
+  email_outlook:
+    keywords: [outlook, email, calendar, mailbox, pst, ost, signature, "outlook crash", "email not sending", "mailbox full", "deleted items", outlook.exe]
+    escalation: L2 if Exchange server issue or mailbox corruption detected
+    suggested_action: Check Outlook profile, rebuild OST/PST if needed, verify mailbox quota
+    kb: KB-1003
+    priority_bump: 0
+
+  hardware:
+    keywords: [laptop, monitor, keyboard, mouse, "hardware failure", device, screen, battery, power, broken, damaged, replacement, "blue screen", bsod]
+    escalation: L2 immediate for hardware failure; procurement for replacement
+    suggested_action: Run hardware diagnostics, check warranty status, arrange replacement if needed
+    kb: KB-1004
+    priority_bump: 1
+
+  software:
+    keywords: [install, uninstall, update, crash, application, software, program, installer, error, "app not responding", frozen, hang, compatibility]
+    escalation: L2 if enterprise application or OS-level issue
+    suggested_action: Check application logs, verify system requirements, try reinstall or rollback
+    kb: KB-1005
+    priority_bump: 0
+
+  access_request:
+    keywords: [permissions, sharepoint, teams, group, role, entitlement, "need access", "request access", authorization, privileges, rights]
+    escalation: L2 if elevated privileges or sensitive resource access requested
+    suggested_action: Verify manager approval, check RBAC policy, provision access via IAM portal
+    kb: KB-1006
+    priority_bump: 0
+
+  printing:
+    keywords: [printer, "print job", driver, spooler, printing, "print queue", "cannot print", "paper jam", toner, ink, "printer offline"]
+    escalation: L2 if print server issue or driver deployment needed
+    suggested_action: Clear print queue, reinstall driver, check printer connectivity and supplies
+    kb: KB-1007
+    priority_bump: 0
+
+  other_unknown:
+    keywords: []
+    escalation: Review and categorize
+    suggested_action: Manual review required - insufficient information for automated triage
+    kb: KB-0000
+    priority_bump: 0
+
+# Priority scoring configuration
+priority:
+  p1_override_words: [down, outage, everyone, production, urgent, critical, emergency, broken, failed, "system down", "all users"]
+  p3_indicator_words: ["when possible", cosmetic, minor, question, inquiry, suggestion, "nice to have", optional, future]
+  p4_indicator_words: [fyi, "for reference", "no action needed", "information only", heads up, notification, "just letting you know"]
+  urgency_modifiers: [asap, immediately, "right now", urgent, "as soon as possible", stat, emergency]
+
+# Escalation rules configuration
+escalation:
+  hardware_failure_keywords: ["hardware failure", "critical hardware error", "device not detected", "disk failure", "memory error"]
+  mfa_keywords: [mfa, "multi-factor", "two-factor", "2fa", "authentication code", "token not working"]
+  security_keywords: [breach, compromised, hacked, unauthorized, intrusion, "security incident"]

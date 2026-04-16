@@ -1,0 +1,1 @@
+VPN connection keeps dropping every few minutes. User cannot connect to the network from home office. Firewall rules seem to block the connection. Timeout errors when trying to establish SSLVPN connection with Cisco AnyConnect.
